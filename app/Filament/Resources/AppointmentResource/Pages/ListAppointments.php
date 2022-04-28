@@ -12,7 +12,7 @@ class ListAppointments extends ListRecords
 
     protected function getTableQuery(): Builder
     {
-        if (auth()->user()->isMaster()) {
+        if (auth()->user()->isMaster) {
             return parent::getTableQuery();
         } else {
             return parent::getTableQuery()->whereRelation('child.orphanage', 'orphanage_id', '=', auth()->user()->orphanage_id);

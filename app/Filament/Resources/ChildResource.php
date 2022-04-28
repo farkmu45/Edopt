@@ -88,7 +88,7 @@ class ChildResource extends Resource
                 Tables\Columns\TextColumn::make('age')->label('Umur')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('orphanage.name')->label('Panti Asuhan')->sortable()->searchable()
                     ->hidden(function () {
-                        if (auth()->user()->isMaster()) {
+                        if (auth()->user()->isMaster) {
                             return false;
                         }
                         return true;

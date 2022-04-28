@@ -12,7 +12,7 @@ class ListChildren extends ListRecords
 
     protected function getTableQuery(): Builder
     {
-        if (auth()->user()->isMaster()) {
+        if (auth()->user()->isMaster) {
             return parent::getTableQuery();
         } else {
             return parent::getTableQuery()->where('orphanage_id', '=', auth()->user()->orphanage_id);

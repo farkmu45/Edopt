@@ -16,7 +16,7 @@ class CreateChild extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        if (auth()->user()->isMaster()) {
+        if (auth()->user()->isMaster) {
             return $data;
         }
 

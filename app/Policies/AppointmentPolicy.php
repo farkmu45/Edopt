@@ -17,7 +17,7 @@ class AppointmentPolicy
 
     public function view(Admin $admin, Appointment $appointment)
     {
-        if ($admin->isMaster()) {
+        if ($admin->isMaster) {
             return true;
         } else if ($admin->orphanage_id == $appointment->child->orphanage_id) {
             return true;
@@ -29,7 +29,7 @@ class AppointmentPolicy
 
     public function create(Admin $admin)
     {
-        if ($admin->isMaster()) {
+        if ($admin->isMaster) {
             return true;
         }
 
@@ -38,7 +38,7 @@ class AppointmentPolicy
 
     public function update(Admin $admin, Appointment $appointment)
     {
-        if ($admin->isMaster()) {
+        if ($admin->isMaster) {
             return true;
         } else if ($admin->orphanage_id == $appointment->child->orphanage_id) {
             return true;
@@ -49,7 +49,7 @@ class AppointmentPolicy
 
     public function delete(Admin $admin, Appointment $appointment)
     {
-        if ($admin->isMaster()) {
+        if ($admin->isMaster) {
             return true;
         } else if ($admin->orphanage_id == $appointment->child->orphanage_id) {
             return true;

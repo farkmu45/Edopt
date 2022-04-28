@@ -17,7 +17,7 @@ class ChildPolicy
 
     public function view(Admin $admin, Child $child)
     {
-        if ($admin->isMaster()) {
+        if ($admin->isMaster) {
             return true;
         } else if ($admin->orphanage_id == $child->orphanage_id) {
             return true;
@@ -34,7 +34,7 @@ class ChildPolicy
 
     public function update(Admin $admin, Child $child)
     {
-        if ($admin->isMaster()) {
+        if ($admin->isMaster) {
             return true;
         } else if ($admin->orphanage_id == $child->orphanage_id) {
             return true;
@@ -45,7 +45,7 @@ class ChildPolicy
 
     public function delete(Admin $admin, Child $child)
     {
-        if ($admin->isMaster()) {
+        if ($admin->isMaster) {
             return true;
         } else if ($admin->orphanage_id == $child->orphanage_id) {
             return true;
