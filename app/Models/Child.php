@@ -17,6 +17,6 @@ class Child extends Model
 
     public function orphanage()
     {
-        return $this->belongsTo(Orphanage::class);
+        return $this->belongsTo(Orphanage::class)->withTrashed();
     }
 }
