@@ -15,8 +15,8 @@ use Livewire\Component;
 class AppointmentResource extends Resource
 {
     protected static ?string $model = Appointment::class;
-    protected static ?string $label = 'Janji Temu';
-    protected static ?string $pluralLabel = 'Janji Temu';
+    protected static ?string $label = 'Kunjungan';
+    protected static ?string $pluralLabel = 'Kunjungan';
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
     protected static ?int $navigationSort = 1;
 

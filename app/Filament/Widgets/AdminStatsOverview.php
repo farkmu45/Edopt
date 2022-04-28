@@ -27,7 +27,7 @@ class AdminStatsOverview extends BaseWidget
         return [
             Card::make('Panti Asuhan', $this->orphanageCount),
             Card::make('Pengguna', $this->userCount),
-            Card::make('Janji Temu', $this->appointmentCount),
+            Card::make('Kunjungan', $this->appointmentCount),
         ];
     }
 }

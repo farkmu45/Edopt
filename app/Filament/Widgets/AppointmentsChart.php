@@ -9,7 +9,7 @@ use Flowframe\Trend\TrendValue;
 
 class AppointmentsChart extends LineChartWidget
 {
-    protected static ?string $heading = 'Statistik Janji Temu';
+    protected static ?string $heading = 'Statistik Kunjungan';
 
     protected function getData(): array
     {
@@ -19,7 +19,7 @@ class AppointmentsChart extends LineChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Appointments',
+                    'label' => 'Kunjungan',
                     'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
                 ]
             ],
