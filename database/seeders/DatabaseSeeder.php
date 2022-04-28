@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Faruk Maulana',
             'email' => 'fark@admin.com',
             'password' => 'password',
-            'is_master' => true,
             'remember_token' => null
         ]);
     }

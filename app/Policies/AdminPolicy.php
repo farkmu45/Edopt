@@ -2,7 +2,6 @@
 
 namespace App\Policies;
 
-use App\Models\Admin;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AdminPolicy
@@ -21,31 +20,31 @@ class AdminPolicy
 
     public function create()
     {
-        return auth()->user()->isMaster();
+        return auth()->user()->isMaster;
     }
 
     public function view()
     {
-        return auth()->user()->isMaster();
+        return auth()->user()->isMaster;
     }
 
     public function viewAny()
     {
-        return auth()->user()->isMaster();
+        return auth()->user()->isMaster;
     }
 
     public function update()
     {
-        return auth()->user()->isMaster();
+        return auth()->user()->isMaster;
     }
 
     public function delete()
     {
-        return auth()->user()->isMaster();
+        return auth()->user()->isMaster;
     }
 
     public function deleteAny()
     {
-        return auth()->user()->isMaster();
+        return auth()->user()->isMaster;
     }
 }

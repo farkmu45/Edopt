@@ -16,16 +16,13 @@ class Admin extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
-    protected $casts = [
-        'is_master' => 'boolean',
-    ];
+    protected $appends = ['isMaster'];
 
     protected $fillable = [
         'name',
         'email',
         'password',
-        'orphanage_id',
-        'is_master'
+        'orphanage_id'
     ];
 
     public function orphanage()
@@ -33,9 +30,9 @@ class Admin extends Authenticatable implements FilamentUser
         return $this->belongsTo(Orphanage::class);
     }
 
-    public function isMaster()
+    public function getIsMasterAttribute()
     {
-        return $this->is_master;
+        return $this->orphanage_id ? false : true;
     }
 
     public function canAccessFilament(): bool
