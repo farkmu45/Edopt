@@ -4,11 +4,14 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AppointmentResource\Pages;
 use App\Models\Appointment;
-use Filament\Forms;
+use Filament\Forms\Components\BelongsToSelect;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Radio;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 
@@ -24,11 +27,21 @@ class AppointmentResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\DateTimePicker::make('time')->label('Waktu')->withoutSeconds()->required(),
-                Forms\Components\BelongsToSelect::make('child_id')->label('Anak')->relationship('child', 'name')
-                    ->hidden(fn (Component $livewire): bool => $livewire instanceof Pages\EditAppointment)->required()->searchable(),
-                Forms\Components\Radio::make('status')->options(['SUCCEED' => 'Sukses', 'FAILED' => 'Gagal', 'INPROGRESS' => 'Dalam proses'])->required()
-                    ->disabled(fn (?Model $record): bool => $record['status'] == 'SUCCEED')->required(),
+                DateTimePicker::make('time')
+                    ->label('Waktu')
+                    ->withoutSeconds()
+                    ->required(),
+                BelongsToSelect::make('child_id')
+                    ->label('Anak')
+                    ->relationship('child', 'name')
+                    ->hidden(fn (Component $livewire): bool => $livewire instanceof Pages\EditAppointment)
+                    ->required()
+                    ->searchable(),
+                Radio::make('status')
+                    ->options(['SUCCEED' => 'Sukses', 'FAILED' => 'Gagal', 'INPROGRESS' => 'Dalam proses'])
+                    ->required()
+                    ->disabled(fn (?Model $record): bool => $record['status'] == 'SUCCEED')
+                    ->required(),
             ]);
     }
 
@@ -36,17 +49,26 @@ class AppointmentResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('child.name')->label('Nama anak')->sortable()->searchable(),
-                Tables\Columns\BadgeColumn::make('status')->enum([
-                    'INPROGRESS' => 'Dalam proses',
-                    'SUCCEED' => 'Sukses',
-                    'FAILED' => 'Gagal',
-                ])->colors([
-                    'danger' => 'FAIELD',
-                    'warning' => 'INPROGRESS',
-                    'success' => 'SUCCEED',
-                ]),
-                Tables\Columns\TextColumn::make('time')->label('Waktu bertemu')->dateTime()->sortable()->searchable()
+                TextColumn::make('child.name')
+                    ->label('Nama anak')
+                    ->sortable()
+                    ->searchable(),
+                BadgeColumn::make('status')
+                    ->enum([
+                        'INPROGRESS' => 'Dalam proses',
+                        'SUCCEED' => 'Sukses',
+                        'FAILED' => 'Gagal',
+                    ])
+                    ->colors([
+                        'danger' => 'FAIELD',
+                        'warning' => 'INPROGRESS',
+                        'success' => 'SUCCEED',
+                    ]),
+                TextColumn::make('time')
+                    ->label('Waktu kunjungan')
+                    ->dateTime()
+                    ->sortable()
+                    ->searchable()
             ])
             ->filters([
                 //

@@ -5,11 +5,15 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\OrphanageResource\Pages;
 use App\Filament\Resources\OrphanageResource\RelationManagers;
 use App\Models\Orphanage;
-use Filament\Forms;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TimePicker;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 
 class OrphanageResource extends Resource
 {
@@ -25,28 +29,43 @@ class OrphanageResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Card::make()
+
+                Card::make()
                     ->schema([
-                        Forms\Components\TextInput::make('name')->label('Nama')->required(),
-                        Forms\Components\TextInput::make('location')->label('Lokasi')->required(),
-                        Forms\Components\Grid::make()
+                        TextInput::make('name')
+                            ->label('Nama')
+                            ->required(),
+                        TextInput::make('location')
+                            ->label('Lokasi')
+                            ->required(),
+                        Grid::make()
                             ->schema([
-                                Forms\Components\TextInput::make('latitude')->required(),
-                                Forms\Components\TextInput::make('longtitude')->required(),
-                                Forms\Components\TimePicker::make('opening_hours')->label('Jam buka')->format('H:i')->withoutSeconds()->required(),
-                                Forms\Components\TimePicker::make('closed_hours')->label('Jam tutup')->format('H:i')->withoutSeconds()->required(),
+                                TextInput::make('latitude')
+                                    ->required(),
+                                TextInput::make('longtitude')
+                                    ->required(),
+                                TimePicker::make('opening_hours')
+                                    ->label('Jam buka')
+                                    ->format('H:i')
+                                    ->withoutSeconds()
+                                    ->required(),
+                                TimePicker::make('closed_hours')
+                                    ->label('Jam tutup')
+                                    ->format('H:i')
+                                    ->withoutSeconds()
+                                    ->required(),
                             ]),
 
                     ])
                     ->columnSpan([
                         'sm' => 2,
                     ]),
-                Forms\Components\Card::make()
+                Card::make()
                     ->schema([
-                        Forms\Components\Placeholder::make('created_at')
+                        Placeholder::make('created_at')
                             ->label('Dibuat')
                             ->content(fn (?Orphanage $record): string => $record ? $record->created_at->diffForHumans() : '-'),
-                        Forms\Components\Placeholder::make('updated_at')
+                        Placeholder::make('updated_at')
                             ->label('Terakhir diubah')
                             ->content(fn (?Orphanage $record): string => $record ? $record->updated_at->diffForHumans() : '-'),
                     ])
@@ -63,13 +82,25 @@ class OrphanageResource extends Resource
 
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->sortable()->searchable()->label('Nama'),
-                Tables\Columns\TextColumn::make('location')->sortable()->searchable()->label('Lokasi'),
-                Tables\Columns\TextColumn::make('latitude'),
-                Tables\Columns\TextColumn::make('longtitude'),
-                Tables\Columns\TextColumn::make('longtitude'),
-                Tables\Columns\TextColumn::make('opening_hours')->label('Jam buka')->sortable()->time('H:m'),
-                Tables\Columns\TextColumn::make('closed_hours')->label('Jam tutup')->sortable()->time('H:m'),
+                TextColumn::make('name')
+                    ->sortable()
+                    ->searchable()
+                    ->label('Nama'),
+                TextColumn::make('location')
+                    ->sortable()
+                    ->searchable()
+                    ->label('Lokasi'),
+                TextColumn::make('latitude'),
+                TextColumn::make('longtitude'),
+                TextColumn::make('longtitude'),
+                TextColumn::make('opening_hours')
+                    ->label('Jam buka')
+                    ->sortable()
+                    ->time('H:m'),
+                TextColumn::make('closed_hours')
+                    ->label('Jam tutup')
+                    ->sortable()
+                    ->time('H:m'),
             ])
             ->filters([
                 //
