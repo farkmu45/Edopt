@@ -90,6 +90,14 @@ class ArticleResource extends Resource
                     ->limit(50)
                     ->sortable()
                     ->searchable(),
+                TextColumn::make('created_at')
+                    ->label('Dibuat')
+                    ->sortable()
+                    ->date(),
+                TextColumn::make('updated_at')
+                    ->label('Terakhir diubah')
+                    ->sortable()
+                    ->date()
             ])
             ->filters([
                 //
