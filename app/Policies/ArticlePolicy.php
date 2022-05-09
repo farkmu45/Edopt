@@ -42,7 +42,7 @@ class ArticlePolicy
 
 
 
-    public function deleteAny(Admin $admin, Article $article)
+    public function deleteAny(Admin $admin)
     {
         return $admin->isMaster;
     }
