@@ -39,16 +39,4 @@ class Admin extends Authenticatable implements FilamentUser
     {
         return str_ends_with($this->email, '@admin.com');
     }
-
-    public static function boot()
-    {
-        parent::boot();
-        static::creating(function ($admin) {
-            $admin['password'] = Hash::make($admin['password']);
-        });
-
-        static::updating(function (Admin $admin) {
-            $admin['password'] = Hash::make($admin['password']);
-        });
-    }
 }
