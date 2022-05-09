@@ -8,7 +8,9 @@ use App\Models\Child;
 use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -71,9 +73,12 @@ class ChildResource extends Resource
                                         }
                                     })
                             ]),
-
-                        Textarea::make('additional_info')
-                            ->label('Informasi Tambahan'),
+                        RichEditor::make('additional_info')
+                            ->label('Informasi Tambahan')
+                            ->disableToolbarButtons([
+                                'attachFiles',
+                                'codeBlock',
+                            ]),
                     ]
                 )->columnSpan(2),
                 Card::make([
