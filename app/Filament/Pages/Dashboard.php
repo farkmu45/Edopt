@@ -15,6 +15,16 @@ class Dashboard extends Page
     protected static ?string $slug = 'dashboard';
     protected static string $view = 'filament.pages.dashboard';
 
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->isMaster;
+    }
+
+    public function mount(): void
+    {
+        abort_unless(auth()->user()->isMaster, 403);
+    }
+
     public function getHeaderWidgets(): array
     {
         return [
