@@ -11,7 +11,10 @@ class ArticleController extends Controller
 {
     public function getAll(): ArticleCollection
     {
-        return new ArticleCollection(Article::paginate(5));
+        return new ArticleCollection(Article::paginate(
+            5,
+            ['id', 'admin_id', 'text_preview', 'image_url', 'created_at', 'updated_at']
+        ));
     }
 
     public function getById(Article $article)
