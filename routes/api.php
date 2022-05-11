@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ChildController;
 use App\Http\Resources\ArticleResource;
 use App\Http\Resources\ArticleCollection;
 use App\Http\Resources\UserResource;
@@ -27,3 +28,5 @@ Route::middleware(['auth:api'])->group(function () {
 
 Route::get('/articles', [ArticleController::class, 'getAll']);
 Route::get('/articles/{article}', [ArticleController::class, 'getById']);
+
+Route::get('/children/{child}', [ChildController::class, 'getById']);
