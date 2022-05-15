@@ -15,4 +15,9 @@ class Appointment extends Model
     {
         return $this->belongsTo(Child::class)->withTrashed();
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -53,6 +53,15 @@ class AppointmentResource extends Resource
                     ->label('Nama anak')
                     ->sortable()
                     ->searchable(),
+                TextColumn::make('child.orphanage.name')
+                    ->limit()
+                    ->label('Panti asuhan')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('user.name')
+                    ->label('Pengadopsi')
+                    ->sortable()
+                    ->searchable(),
                 BadgeColumn::make('status')
                     ->enum([
                         'INPROGRESS' => 'Dalam proses',

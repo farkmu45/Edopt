@@ -15,10 +15,12 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
     public function definition()
     {
+        static $number = 1;
         return [
-            'id' => $this->faker->unique(true)->numberBetween(10000, 999999),
+            'id' => $number++,
             'name' => $this->faker->name(),
             'email' => $this->faker->safeEmail(),
             'phone' => $this->faker->phoneNumber(),
