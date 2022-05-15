@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('appointments', function (Blueprint $table) {
             $table->foreignId('child_id')->constrained('children')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

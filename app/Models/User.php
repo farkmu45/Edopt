@@ -11,7 +11,7 @@ use Wcaaan\FirebaseTokenAuthentication\FirebaseTokenAuthenticable;
 
 class User extends Authenticatable
 {
-    use Notifiable, FirebaseTokenAuthenticable;
+    use Notifiable, FirebaseTokenAuthenticable, HasFactory;
 
     public $incrementing = false;
 

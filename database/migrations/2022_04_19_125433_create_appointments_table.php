@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id')->index();
             $table->dateTimeTz('time');
             $table->enum('status', ['SUCCEED', 'FAILED', 'INPROGRESS']);
             $table->timestamps();
