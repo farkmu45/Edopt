@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ChildController;
 use App\Http\Resources\ArticleResource;
@@ -28,5 +29,8 @@ Route::middleware(['auth:api'])->group(function () {
 
 Route::get('/articles', [ArticleController::class, 'getAll']);
 Route::get('/articles/{article}', [ArticleController::class, 'getById']);
+
+Route::get('/appointments', [AppointmentController::class, 'getAll']);
+Route::get('/appointments/{appointment}', [AppointmentController::class, 'getById']);
 
 Route::get('/children/{child}', [ChildController::class, 'getById']);
