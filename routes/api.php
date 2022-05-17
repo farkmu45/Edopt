@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ChildController;
+use App\Http\Controllers\OrphanageController;
 use App\Http\Resources\ArticleResource;
 use App\Http\Resources\ArticleCollection;
 use App\Http\Resources\UserResource;
@@ -34,3 +35,6 @@ Route::get('/appointments', [AppointmentController::class, 'getAll']);
 Route::get('/appointments/{appointment}', [AppointmentController::class, 'getById']);
 
 Route::get('/children/{child}', [ChildController::class, 'getById']);
+
+Route::get('/orphanages/{orphanage}', [OrphanageController::class, 'getById']);
+Route::get('/orphanages', [OrphanageController::class, 'search']);
