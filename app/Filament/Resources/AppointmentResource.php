@@ -38,9 +38,9 @@ class AppointmentResource extends Resource
                     ->required()
                     ->searchable(),
                 Radio::make('status')
-                    ->options(['SUCCEED' => 'Sukses', 'FAILED' => 'Gagal', 'INPROGRESS' => 'Dalam proses'])
+                    ->options(['SUCCESS' => 'Sukses', 'FAILED' => 'Gagal', 'INPROGRESS' => 'Dalam proses'])
                     ->required()
-                    ->disabled(fn (?Model $record): bool => $record['status'] == 'SUCCEED')
+                    ->disabled(fn (?Model $record): bool => $record['status'] == 'SUCCESS')
                     ->required(),
             ]);
     }
@@ -65,13 +65,13 @@ class AppointmentResource extends Resource
                 BadgeColumn::make('status')
                     ->enum([
                         'INPROGRESS' => 'Dalam proses',
-                        'SUCCEED' => 'Sukses',
+                        'SUCCESS' => 'Sukses',
                         'FAILED' => 'Gagal',
                     ])
                     ->colors([
                         'danger' => 'FAIELD',
                         'warning' => 'INPROGRESS',
-                        'success' => 'SUCCEED',
+                        'success' => 'SUCCESS',
                     ]),
                 TextColumn::make('time')
                     ->label('Waktu kunjungan')

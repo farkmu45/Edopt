@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('user_id')->index();
             $table->dateTimeTz('time');
-            $table->enum('status', ['SUCCEED', 'FAILED', 'INPROGRESS']);
+            $table->enum('status', ['SUCCESS', 'FAILED', 'INPROGRESS'])->default('INPROGRESS');
             $table->timestamps();
         });
     }
