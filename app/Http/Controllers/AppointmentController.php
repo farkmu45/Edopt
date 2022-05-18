@@ -18,8 +18,22 @@ class AppointmentController extends Controller
 
     public function getById(Appointment $appointment)
     {
-         // TODO authorize by using user_id
+        // TODO authorize by using user_id
 
         return new AppointmentResource($appointment);
+    }
+
+    public function create(Request $request)
+    {
+        $data = $request->validate(
+            [
+                'time' => 'date|required',
+                'child_id' => 'exists:children,id|required',
+            ]
+        );
+
+        $data['user_id'] = 2;
+
+        return new AppointmentResource(Appointment::create($data));
     }
 }

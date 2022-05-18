@@ -15,7 +15,7 @@ class AppointmentResource extends JsonResource
             'orphanage' => $this->orphanage->name,
             'child' => $this->child->name,
             'latitude' =>  $this->orphanage->latitude,
-            'longtitude' =>  $this->orphanage->longtitude,
+            'longitude' =>  $this->orphanage->longitude,
         ];
     }
 }

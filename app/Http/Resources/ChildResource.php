@@ -16,9 +16,6 @@ class ChildResource extends JsonResource
             'age' => $this->age,
             'additional_info' => $this->additional_info,
             'is_adopted' => $this->is_adopted,
-            'deleted_at' => $this->deleted_at,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
         ];
     }
 }
