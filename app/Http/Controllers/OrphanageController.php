@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\OrphanageCollection;
 use Algolia\AlgoliaSearch\SearchIndex;
+use App\Http\Resources\OrphanageResource;
 use App\Models\Orphanage;
 use Illuminate\Http\Request;
 
@@ -27,5 +28,10 @@ class OrphanageController extends Controller
                 }
             )->paginate(10));
         }
+    }
+
+    public function getById(Orphanage $orphanage)
+    {
+        return new OrphanageResource($orphanage);
     }
 }
