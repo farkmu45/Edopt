@@ -37,6 +37,9 @@ class DatabaseSeeder extends Seeder
 
         Orphanage::create([
             'name' => 'Bondowoso',
+            'province_id' => 35,
+            'regency_id' => 3511,
+            'district_id' => 3511050,
             'latitude' => '-7.912630224250118',
             'longitude' => '113.82122543338967',
             'address' => 'test',
