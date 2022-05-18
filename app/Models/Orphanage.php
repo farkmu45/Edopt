@@ -9,7 +9,7 @@ use Laravel\Scout\Searchable;
 
 class Orphanage extends Model
 {
-    use Searchable;
+    // use Searchable;
     use HasFactory;
     use SoftDeletes;
 
@@ -20,16 +20,31 @@ class Orphanage extends Model
         return $this->hasMany(Child::class);
     }
 
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
+
+    public function regency()
+    {
+        return  $this->belongsTo(Regency::class);
+    }
+
     public function toSearchableArray()
     {
         $record = $this->toArray();
 
         $record['_geoloc'] = [
             'lat' => $record['latitude'],
-            'lng' => $record['longtitude']
+            'lng' => $record['longitude']
         ];
 
-        unset($record['created_at'], $record['updated_at'], $record['deleted_at'], $record['latitude'], $record['longtitude']);
+        unset($record['created_at'], $record['updated_at'], $record['deleted_at'], $record['latitude'], $record['longitude']);
         return $record;
     }
 }

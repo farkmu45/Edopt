@@ -19,10 +19,10 @@ class OrphanageFactory extends Factory
         return [
             'name' => $this->faker->company(),
             'latitude' => $this->faker->latitude(),
-            'longtitude' => $this->faker->longitude(),
-            'location' => $this->faker->address(),
-            'opening_hours' => $this->faker->time(),
-            'closed_hours' => $this->faker->time(),
+            'longitude' => $this->faker->longitude(),
+            'address' => $this->faker->address(),
+            'opening_hours' => $this->faker->time('H:i'),
+            'closing_hours' => $this->faker->time('H:i'),
         ];
     }
 }

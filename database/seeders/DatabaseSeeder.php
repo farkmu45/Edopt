@@ -17,6 +17,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        $this->call(IndoRegionProvinceSeeder::class);
+        $this->call(IndoRegionRegencySeeder::class);
+        $this->call(IndoRegionDistrictSeeder::class);
+
         \App\Models\Orphanage::factory(10)->create();
         \App\Models\Admin::factory(10)->create();
         \App\Models\Article::factory(10)->create();
@@ -33,10 +38,10 @@ class DatabaseSeeder extends Seeder
         Orphanage::create([
             'name' => 'Bondowoso',
             'latitude' => '-7.912630224250118',
-            'longtitude' => '113.82122543338967',
-            'location' => 'test',
-            'opening_hours' => '12:00:01',
-            'closed_hours' => '12:00:01',
+            'longitude' => '113.82122543338967',
+            'address' => 'test',
+            'opening_hours' => '12:00',
+            'closing_hours' => '12:45',
         ]);
     }
 }

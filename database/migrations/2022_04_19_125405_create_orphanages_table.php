@@ -15,12 +15,15 @@ return new class extends Migration
     {
         Schema::create('orphanages', function (Blueprint $table) {
             $table->id();
+            $table->char('province_id', 2)->nullable();
+            $table->char('regency_id', 4)->nullable();
+            $table->char('district_id', 7)->nullable();
             $table->string('name');
-            $table->string('location');
+            $table->string('address');
             $table->string('latitude');
-            $table->string('longtitude');
+            $table->string('longitude');
             $table->string('opening_hours');
-            $table->string('closed_hours');
+            $table->string('closing_hours');
             $table->softDeletes();
             $table->timestamps();
         });

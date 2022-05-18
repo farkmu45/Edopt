@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\OrphanageResource\Pages;
 use App\Filament\Resources\OrphanageResource\RelationManagers;
 use App\Models\Orphanage;
+use Closure;
+use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Placeholder;
@@ -14,6 +16,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Builder;
 
 class OrphanageResource extends Resource
 {
@@ -34,21 +37,53 @@ class OrphanageResource extends Resource
                         TextInput::make('name')
                             ->label('Nama')
                             ->required(),
-                        TextInput::make('location')
-                            ->label('Lokasi')
+                        Grid::make()
+                            ->schema([
+                                BelongsToSelect::make('province_id')
+                                    ->relationship('province', 'name')
+                                    ->label('Provinsi')
+                                    ->required()
+                                    ->reactive()
+                                    ->required(),
+                                BelongsToSelect::make('regency_id')
+                                    ->relationship(
+                                        'regency',
+                                        'name',
+                                        fn (Builder $query, Closure $get) =>
+                                        $query->where('province_id', '=', $get('province_id'))
+                                    )
+                                    ->label('Kabupaten')
+                                    ->disabled(fn (Closure $get) => $get('province_id') == null)
+                                    ->reactive()
+                                    ->required(),
+                                BelongsToSelect::make('district_id')
+                                    ->relationship(
+                                        'district',
+                                        'name',
+                                        fn (Builder $query, Closure $get) =>
+                                        $query->where('regency_id', '=', $get('regency_id'))
+                                    )
+                                    ->label('Kecamatan')
+                                    ->disabled(fn (Closure $get) => $get('regency_id') == null)
+                                    ->reactive()
+                                    ->required()
+                                    ->columnSpan(2)
+                            ]),
+                        TextInput::make('address')
+                            ->label('Alamat')
                             ->required(),
                         Grid::make()
                             ->schema([
                                 TextInput::make('latitude')
                                     ->required(),
-                                TextInput::make('longtitude')
+                                TextInput::make('longitude')
                                     ->required(),
                                 TimePicker::make('opening_hours')
                                     ->label('Jam buka')
                                     ->format('H:i')
                                     ->withoutSeconds()
                                     ->required(),
-                                TimePicker::make('closed_hours')
+                                TimePicker::make('closing_hours')
                                     ->label('Jam tutup')
                                     ->format('H:i')
                                     ->withoutSeconds()
@@ -85,18 +120,27 @@ class OrphanageResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->label('Nama'),
-                TextColumn::make('location')
+                TextColumn::make('province.name')
+                    ->label('Provinsi')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('regency.name')
+                    ->label('Kabupaten')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('district.name')
+                    ->label('Kecamatan')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('address')
                     ->sortable()
                     ->searchable()
-                    ->label('Lokasi'),
-                TextColumn::make('latitude'),
-                TextColumn::make('longtitude'),
-                TextColumn::make('longtitude'),
+                    ->label('Alamat'),
                 TextColumn::make('opening_hours')
                     ->label('Jam buka')
                     ->sortable()
                     ->time('H:m'),
-                TextColumn::make('closed_hours')
+                TextColumn::make('closing_hours')
                     ->label('Jam tutup')
                     ->sortable()
                     ->time('H:m'),
