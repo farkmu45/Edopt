@@ -14,7 +14,7 @@ class OrphanageController extends Controller
         if ($request->has('query') && $request->has('lat') && $request->has('lng')) {
             $lat = $request->input('lat');
             $lng = $request->input('lng');
-            $query = $request->input('query');
+            $query = $request->input('query') ?? '';
 
             // Around precision groups location based on linear number (10000 - 19999, 20000 - 29999)
 

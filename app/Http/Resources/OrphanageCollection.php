@@ -12,8 +12,11 @@ class OrphanageCollection extends ResourceCollection
             fn ($orphanage) => [
                 'id' => $orphanage->id,
                 'name' => $orphanage->name,
+                'province' => $orphanage->province->name,
+                'regency' => $orphanage->regency->name,
+                'district' => $orphanage->district->name,
                 'opening_hours' => $orphanage->opening_hours,
-                'closed_hours' => $orphanage->closed_hours,
+                'closing_hours' => $orphanage->closing_hours,
             ]
         );
     }
