@@ -33,8 +33,8 @@ class ArticleResource extends Resource
                         TextInput::make('title')
                             ->label('Judul')
                             ->required(),
-                        TextInput::make('text_preview')
-                            ->label('Sub judul')
+                        TextInput::make('preview_text')
+                            ->label('Teks pratinjau')
                             ->required(),
                         FileUpload::make('image_url')
                             ->label('Gambar')
@@ -85,8 +85,8 @@ class ArticleResource extends Resource
                     ->sortable()
                     ->limit(50)
                     ->label('Judul'),
-                TextColumn::make('text_preview')
-                    ->label('Sub judul')
+                TextColumn::make('preview_text')
+                    ->label('Teks pratinjau')
                     ->limit(50)
                     ->sortable()
                     ->searchable(),

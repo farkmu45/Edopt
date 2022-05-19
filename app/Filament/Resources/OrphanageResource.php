@@ -8,6 +8,7 @@ use App\Models\Orphanage;
 use Closure;
 use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
@@ -34,6 +35,15 @@ class OrphanageResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
+                        FileUpload::make('image_url')
+                            ->label('Gambar')
+                            ->directory('orphanageImages')
+                            ->required()
+                            ->imageCropAspectRatio('16:9')
+                            ->imageResizeTargetWidth('1920')
+                            ->imageResizeTargetHeight('1080')
+                            ->image()
+                            ->maxSize(1024),
                         TextInput::make('name')
                             ->label('Nama')
                             ->required(),

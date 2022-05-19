@@ -18,9 +18,10 @@ class ArticleFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(3),
-            'text_preview' => $this->faker->sentence(6),
+            'preview_text' => $this->faker->sentence(6),
             'content' => $this->faker->paragraphs(4, true),
-            'admin_id' => $this->faker->numberBetween(1, 9)
+            'admin_id' => $this->faker->numberBetween(1, 9),
+            'image_url' => 'https://picsum.photos/200/200?random=' . $this->faker->unique(true)->numberBetween(10000, 999999)
         ];
     }
 }

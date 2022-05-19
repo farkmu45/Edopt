@@ -35,6 +35,7 @@ Route::get('/appointments', [AppointmentController::class, 'getAll']);
 Route::post('/appointments', [AppointmentController::class, 'create']);
 Route::get('/appointments/{appointment}', [AppointmentController::class, 'getById']);
 
+Route::get('/children', [ChildController::class, 'getAll']);
 Route::get('/children/{child}', [ChildController::class, 'getById']);
 
 Route::get('/orphanages/{orphanage}', [OrphanageController::class, 'getById']);

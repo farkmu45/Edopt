@@ -19,6 +19,7 @@ return new class extends Migration
             $table->char('regency_id', 4);
             $table->char('district_id', 7);
             $table->string('name');
+            $table->string('image_url');
             $table->string('address');
             $table->string('latitude');
             $table->string('longitude');
