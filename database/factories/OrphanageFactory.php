@@ -23,6 +23,7 @@ class OrphanageFactory extends Factory
             'province_id' => 35,
             'regency_id' => 3511,
             'district_id' => 3511050,
+            'image_url' => 'https://picsum.photos/400/400?random=' . $this->faker->unique(true)->numberBetween(10000, 999999),
             'address' => $this->faker->address(),
             'opening_hours' => $this->faker->time('H:i'),
             'closing_hours' => $this->faker->time('H:i'),

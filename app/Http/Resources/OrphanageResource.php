@@ -11,6 +11,7 @@ class OrphanageResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'image_url' => $this->image_url,
             'province' => $this->province->name,
             'regency' => $this->regency->name,
             'district' => $this->district->name,
