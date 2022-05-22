@@ -19,14 +19,12 @@ class OrphanageController extends Controller
 
             // Around precision groups location based on linear number (10000 - 19999, 20000 - 29999)
 
-            return new OrphanageCollection(Orphanage::search(
-                $query,
-                function (SearchIndex $algolia, string $query, array $options) use ($lat, $lng) {
-                    $options['aroundLatLng'] = "$lat, $lng";
-                    $options['aroundPrecision'] = 10000;
-                    return $algolia->search($query, $options);
-                }
-            )->paginate(10));
+            return new OrphanageCollection(Orphanage::search($query)
+            ->aroundLatLng($lat, $lng)
+            ->with([
+                'aroundPrecision' => 10000,
+            ])
+            ->paginate(10));
         }
     }
 

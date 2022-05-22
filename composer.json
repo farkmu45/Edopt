@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "algolia/algoliasearch-client-php": "^3.2",
+        "algolia/scout-extended": "^2.0",
         "azishapidin/indoregion": "^3.0",
         "filament/filament": "^2.10",
         "flowframe/laravel-trend": "^0.1.1",
