@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\Child;
 use App\Models\Orphanage;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -46,6 +47,24 @@ class DatabaseSeeder extends Seeder
             'address' => 'test',
             'opening_hours' => '12:00',
             'closing_hours' => '12:45',
+        ]);
+
+        Child::create([
+            'name' => 'BWS 1',
+            'gender' => 'MALE',
+            'age' => 5,
+            'additional_info' => 'sdfjldsafds',
+            'is_adopted' => false,
+            'orphanage_id' => 11
+        ]);
+
+        Child::create([
+            'name' => 'NAGH BWS NIECH',
+            'gender' => 'FEMALE',
+            'age' => 6,
+            'additional_info' => 'sdfjldsafds',
+            'is_adopted' => false,
+            'orphanage_id' => 11
         ]);
     }
 }

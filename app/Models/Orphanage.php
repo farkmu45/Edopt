@@ -57,7 +57,10 @@ class Orphanage extends Model
             $record['regency_id'],
             $record['province_id'],
             $record['district_id'],
+            $record['id'],
             $record['image_url'],
+            $record['opening_hours'],
+            $record['closing_hours'],
         );
         return $record;
     }

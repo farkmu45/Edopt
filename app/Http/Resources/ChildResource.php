@@ -15,7 +15,6 @@ class ChildResource extends JsonResource
             'gender' => $this->gender,
             'age' => $this->age,
             'additional_info' => $this->additional_info,
-            'is_adopted' => $this->is_adopted,
         ];
     }
 }
