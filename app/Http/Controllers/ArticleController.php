@@ -13,7 +13,7 @@ class ArticleController extends Controller
     {
         return new ArticleCollection(Article::paginate(
             5,
-            ['id', 'admin_id', 'preview_text', 'image_url', 'created_at', 'updated_at']
+            ['id', 'admin_id', 'title', 'preview_text', 'image_url', 'created_at', 'updated_at']
         ));
     }
 
