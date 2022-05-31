@@ -18,6 +18,7 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class OrphanageResource extends Resource
 {
@@ -53,6 +54,7 @@ class OrphanageResource extends Resource
                                     ->relationship('province', 'name')
                                     ->label('Provinsi')
                                     ->required()
+                                    ->getOptionLabelFromRecordUsing(fn (Model $record) => ucwords(strtolower($record->name)))
                                     ->reactive()
                                     ->required(),
                                 BelongsToSelect::make('regency_id')
@@ -63,6 +65,7 @@ class OrphanageResource extends Resource
                                         $query->where('province_id', '=', $get('province_id'))
                                     )
                                     ->label('Kabupaten')
+                                    ->getOptionLabelFromRecordUsing(fn (Model $record) => ucwords(strtolower($record->name)))
                                     ->disabled(fn (Closure $get) => $get('province_id') == null)
                                     ->reactive()
                                     ->required(),
@@ -75,6 +78,7 @@ class OrphanageResource extends Resource
                                     )
                                     ->label('Kecamatan')
                                     ->disabled(fn (Closure $get) => $get('regency_id') == null)
+                                    ->getOptionLabelFromRecordUsing(fn (Model $record) => ucwords(strtolower($record->name)))
                                     ->reactive()
                                     ->required()
                                     ->columnSpan(2)
@@ -132,14 +136,17 @@ class OrphanageResource extends Resource
                     ->label('Nama'),
                 TextColumn::make('province.name')
                     ->label('Provinsi')
+                    ->formatStateUsing(fn (string $state): string => ucwords(strtolower($state)))
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('regency.name')
                     ->label('Kabupaten')
+                    ->formatStateUsing(fn (string $state): string => ucwords(strtolower($state)))
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('district.name')
                     ->label('Kecamatan')
+                    ->formatStateUsing(fn (string $state): string => ucwords(strtolower($state)))
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('address')
