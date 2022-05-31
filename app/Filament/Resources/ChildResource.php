@@ -24,7 +24,7 @@ use Livewire\Component;
 class ChildResource extends Resource
 {
     protected static ?string $model = Child::class;
-    protected static ?string $label = 'Anak';
+    protected static ?string $label = 'Biodata anak';
     protected static ?string $pluralLabel = 'Anak';
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?string $navigationIcon = 'heroicon-o-emoji-happy';
@@ -47,11 +47,11 @@ class ChildResource extends Resource
                                     ->numeric()
                                     ->required(),
                                 Select::make('gender')
-                                    ->label('Jenis Kelamin')
+                                    ->label('Jenis kelamin')
                                     ->options(['MALE' => 'Laki-laki', 'FEMALE' => 'Perempuan'])
                                     ->required(),
                                 BelongsToSelect::make('orphanage_id')
-                                    ->label('Panti Asuhan')
+                                    ->label('Panti asuhan')
                                     ->relationship('orphanage', 'name')
                                     ->required()
                                     ->default(function (Component $livewire) {
@@ -74,7 +74,7 @@ class ChildResource extends Resource
                                     })
                             ]),
                         RichEditor::make('additional_info')
-                            ->label('Informasi Tambahan')
+                            ->label('Informasi tambahan')
                             ->disableToolbarButtons([
                                 'attachFiles',
                                 'codeBlock',
@@ -106,7 +106,7 @@ class ChildResource extends Resource
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('gender')
-                    ->label('Jenis Kelamin')
+                    ->label('Jenis kelamin')
                     ->enum(
                         [
                             'MALE' => 'Laki-laki',
@@ -119,7 +119,7 @@ class ChildResource extends Resource
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('orphanage.name')
-                    ->label('Panti Asuhan')
+                    ->label('Panti asuhan')
                     ->sortable()
                     ->searchable()
                     ->hidden(function () {

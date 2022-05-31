@@ -14,6 +14,8 @@ class ChildrenRelationManager extends HasManyRelationManager
     protected static string $relationship = 'children';
 
     protected static ?string $title = 'Anak';
+    protected static ?string $label = 'biodata anak';
+    protected static ?string $pluralLabel = 'Anak';
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Form $form): Form

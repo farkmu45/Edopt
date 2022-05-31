@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Builder;
 class OrphanageResource extends Resource
 {
     protected static ?string $model = Orphanage::class;
-    protected static ?string $label = 'Panti Asuhan';
+    protected static ?string $label = 'Panti asuhan';
     protected static ?string $pluralLabel = 'Panti Asuhan';
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?string $navigationIcon = 'heroicon-o-home';

@@ -35,11 +35,11 @@ class AdminResource extends Resource
                         ->email()
                         ->required(),
                     TextInput::make('password')
-                        ->label('Kata Sandi')
+                        ->label('Kata sandi')
                         ->password()
                         ->required(),
                     BelongsToSelect::make('orphanage')
-                        ->label('Panti Asuhan')
+                        ->label('Panti asuhan')
                         ->relationship('orphanage', 'name')
                         ->required()
                         ->searchable()
