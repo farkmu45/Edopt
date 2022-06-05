@@ -13,7 +13,7 @@ class AppointmentController extends Controller
     {
         // TODO get by user ID from token
 
-        return new AppointmentCollection(Appointment::where('user_id', 2)->get());
+        return new AppointmentCollection(Appointment::where('user_id', 2)->paginate(5));
     }
 
     public function getById(Appointment $appointment)
