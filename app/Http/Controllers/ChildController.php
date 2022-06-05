@@ -18,14 +18,7 @@ class ChildController extends Controller
         $gender = $request->input('gender') ?? '';
 
         // Limit child location to 40 km
-        return new ChildCollection(Child::search()
-            ->whereBetween('age', [$minAge, $maxAge])
-            ->where('is_adopted', 0)
-            ->aroundLatLng($lat, $lng)
-            ->with([
-                'facetFilters' => 'gender:'.$gender,
-                'aroundRadius' => 40000,
-            ])->get());
+        return new ChildCollection(Child::all());
     }
 
     public function getById(Child $child)
