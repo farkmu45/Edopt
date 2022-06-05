@@ -12,7 +12,7 @@ class OrphanageController extends Controller
 {
     public function search(Request $request)
     {
-        if ($request->has('query') && $request->has('lat') && $request->has('lng')) {
+        if ($request->has('lat') && $request->has('lng')) {
             $lat = $request->input('lat');
             $lng = $request->input('lng');
             $query = $request->input('query') ?? '';
@@ -23,8 +23,7 @@ class OrphanageController extends Controller
             ->aroundLatLng($lat, $lng)
             ->with([
                 'aroundPrecision' => 10000,
-            ])
-            ->paginate(10));
+            ]));
         }
     }
 

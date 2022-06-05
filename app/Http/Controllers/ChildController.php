@@ -25,8 +25,7 @@ class ChildController extends Controller
             ->with([
                 'facetFilters' => 'gender:'.$gender,
                 'aroundRadius' => 40000,
-            ])
-            ->paginate(10));
+            ]));
     }
 
     public function getById(Child $child)
