@@ -25,7 +25,7 @@ class ChildController extends Controller
             ->with([
                 'facetFilters' => 'gender:'.$gender,
                 'aroundRadius' => 40000,
-            ]));
+            ])->get());
     }
 
     public function getById(Child $child)

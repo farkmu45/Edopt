@@ -23,7 +23,7 @@ class OrphanageController extends Controller
             ->aroundLatLng($lat, $lng)
             ->with([
                 'aroundPrecision' => 10000,
-            ]));
+            ])->get());
         }
     }
 
