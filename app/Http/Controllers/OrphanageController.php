@@ -12,19 +12,15 @@ class OrphanageController extends Controller
 {
     public function search(Request $request)
     {
-        if ($request->has('lat') && $request->has('lng')) {
-            $lat = $request->input('lat');
-            $lng = $request->input('lng');
-            $query = $request->input('query') ?? '';
+        // if ($request->has('lat') && $request->has('lng')) {
+        //     $lat = $request->input('lat');
+        //     $lng = $request->input('lng');
+        //     $query = $request->input('query') ?? '';
 
             // Around precision groups location based on linear number (10000 - 19999, 20000 - 29999)
 
-            return new OrphanageCollection(Orphanage::search($query)
-            ->aroundLatLng($lat, $lng)
-            ->with([
-                'aroundPrecision' => 10000,
-            ])->get());
-        }
+            return new OrphanageCollection(Orphanage::all());
+        // }
     }
 
     public function getById(Orphanage $orphanage)

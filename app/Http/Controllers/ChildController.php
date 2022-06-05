@@ -11,11 +11,11 @@ class ChildController extends Controller
 {
     public function getAll(Request $request)
     {
-        $lat = $request->input('lat');
-        $lng = $request->input('lng');
-        $minAge = $request->input('min_age') ?? 1;
-        $maxAge = $request->input('max_age') ?? 20;
-        $gender = $request->input('gender') ?? '';
+        // $lat = $request->input('lat');
+        // $lng = $request->input('lng');
+        // $minAge = $request->input('min_age') ?? 1;
+        // $maxAge = $request->input('max_age') ?? 20;
+        // $gender = $request->input('gender') ?? '';
 
         // Limit child location to 40 km
         return new ChildCollection(Child::all());
