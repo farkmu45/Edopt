@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/login', '/admin/login')->name('login');
 
+Route::get('/', function () {
+    return ['message' => 'All system is OK!'];
+});
+
 Route::get('/link', function () {
     Artisan::call('storage:link');
 });
