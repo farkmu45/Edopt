@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,3 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/login', '/admin/login')->name('login');
+
+Route::get('/link', function () {
+    Artisan::call('storage:link');
+});
