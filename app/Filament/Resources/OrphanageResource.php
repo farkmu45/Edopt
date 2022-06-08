@@ -54,6 +54,11 @@ class OrphanageResource extends Resource
                                     ->relationship('province', 'name')
                                     ->label('Provinsi')
                                     ->required()
+                                    ->afterStateUpdated(function (Closure $get, $set) {
+                                        if ($get('province_id') == null) {
+                                            $set('regency_id', null);
+                                        }
+                                    })
                                     ->getOptionLabelFromRecordUsing(fn (Model $record) => ucwords(strtolower($record->name)))
                                     ->reactive()
                                     ->required(),
