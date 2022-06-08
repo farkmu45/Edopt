@@ -13,7 +13,10 @@ class AppointmentCollection extends ResourceCollection
                 'id' => $appointment->id,
                 'time' => $appointment->time,
                 'status' => $appointment->status,
-                'orphanage' => $appointment->orphanage->name
+                'orphanage' => $appointment->orphanage->name,
+                'child' => $appointment->child->name,
+                'latitude' =>  $appointment->orphanage->latitude,
+                'longitude' =>  $appointment->orphanage->longitude,
             ]
         );
     }
