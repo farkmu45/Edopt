@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ChildResource\Pages;
 use App\Filament\Resources\OrphanageResource\RelationManagers\ChildrenRelationManager;
 use App\Models\Child;
+use Closure;
 use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
@@ -38,6 +39,7 @@ class ChildResource extends Resource
                 Card::make(
                     [
                         Grid::make()
+                            ->disabled(fn (Closure $get) => $get('is_adopted') == true)
                             ->schema([
                                 TextInput::make('name')
                                     ->required()
@@ -75,6 +77,7 @@ class ChildResource extends Resource
                             ]),
                         RichEditor::make('additional_info')
                             ->label('Informasi tambahan')
+                            ->disabled(fn (Closure $get) => $get('is_adopted') == true)
                             ->disableToolbarButtons([
                                 'attachFiles',
                                 'codeBlock',
