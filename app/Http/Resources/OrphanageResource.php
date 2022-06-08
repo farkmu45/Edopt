@@ -11,7 +11,7 @@ class OrphanageResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'image_url' => asset($this->image_url),
+            'image_url' => asset('/storage/' . $this->image_url),
             'province' => ucwords(strtolower($this->province->name)),
             'regency' =>  ucwords(strtolower($this->regency->name)),
             'district' => ucwords(strtolower($this->district->name)),
