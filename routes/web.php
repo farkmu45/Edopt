@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/login', '/admin/login')->name('login');
 
 Route::get('/', function () {
-    return ['message' => 'All system is operational!'];
+    return ['message' => 'All system is normal'];
 });
 
 Route::get('/link', function () {
