@@ -41,10 +41,8 @@ class OrphanageResource extends Resource
                             ->directory('orphanageImages')
                             ->required()
                             ->imageCropAspectRatio('16:9')
-                            ->imageResizeTargetWidth('1920')
-                            ->imageResizeTargetHeight('1080')
                             ->image()
-                            ->maxSize(1024),
+                            ->maxSize(2000),
                         TextInput::make('name')
                             ->label('Nama')
                             ->required(),
