@@ -7,10 +7,13 @@ use App\Models\Appointment;
 use App\Models\Article;
 use App\Models\Child;
 use App\Models\Orphanage;
+use App\Models\User;
 use App\Policies\AdminPolicy;
 use App\Policies\AppointmentPolicy;
 use App\Policies\ArticlePolicy;
 use App\Policies\ChildPolicy;
+use App\Policies\OrphanagePolicy;
+use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -23,7 +26,8 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         Admin::class => AdminPolicy::class,
-        Orphanage::class => AdminPolicy::class,
+        User::class => UserPolicy::class,
+        Orphanage::class => OrphanagePolicy::class,
         Child::class => ChildPolicy::class,
         Appointment::class => AppointmentPolicy::class,
         Article::class => ArticlePolicy::class

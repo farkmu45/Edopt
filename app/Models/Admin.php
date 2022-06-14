@@ -16,8 +16,6 @@ class Admin extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
-    protected $appends = ['isMaster'];
-
     protected $fillable = [
         'name',
         'email',
@@ -30,13 +28,13 @@ class Admin extends Authenticatable implements FilamentUser
         return $this->belongsTo(Orphanage::class);
     }
 
-    public function getIsMasterAttribute()
+    public function isMaster()
     {
         return $this->orphanage_id ? false : true;
     }
 
     public function canAccessFilament(): bool
     {
-        return str_ends_with($this->email, '@admin.com');
+        return str_ends_with($this->email, '@edopt.com');
     }
 }

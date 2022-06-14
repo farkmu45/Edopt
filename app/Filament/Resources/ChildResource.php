@@ -9,11 +9,9 @@ use Closure;
 use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
-use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -126,7 +124,7 @@ class ChildResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->hidden(function () {
-                        if (auth()->user()->isMaster) {
+                        if (auth()->user()->isMaster()) {
                             return false;
                         }
                         return true;

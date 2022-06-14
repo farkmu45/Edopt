@@ -3,21 +3,21 @@
 namespace App\Policies;
 
 use App\Models\Admin;
-use App\Models\Article;
+use App\Models\Orphanage;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ArticlePolicy
+class OrphanagePolicy
 {
     use HandlesAuthorization;
 
+    use HandlesAuthorization;
 
     public function viewAny(Admin $admin)
     {
         return $admin->isMaster();
     }
 
-
-    public function view(Admin $admin, Article $article)
+    public function view(Admin $admin, Orphanage $orphanage)
     {
         return $admin->isMaster();
     }
@@ -28,14 +28,12 @@ class ArticlePolicy
         return $admin->isMaster();
     }
 
-
-    public function update(Admin $admin, Article $article)
+    public function update(Admin $admin, Orphanage $orphanage)
     {
         return $admin->isMaster();
     }
 
-
-    public function delete(Admin $admin, Article $article)
+    public function delete(Admin $admin, Orphanage $orphanage)
     {
         return $admin->isMaster();
     }

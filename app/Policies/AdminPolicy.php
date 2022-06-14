@@ -2,49 +2,42 @@
 
 namespace App\Policies;
 
+use App\Models\Admin;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AdminPolicy
 {
+
     use HandlesAuthorization;
 
-    /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function viewAny(Admin $admin)
     {
-        //
+        return $admin->isMaster();
     }
 
-    public function create()
+    public function view(Admin $admin, Admin $adminInstance)
     {
-        return auth()->user()->isMaster;
+        return $admin->isMaster() && !$adminInstance->isMaster();
     }
 
-    public function view()
+
+    public function create(Admin $admin)
     {
-        return auth()->user()->isMaster;
+        return $admin->isMaster();
     }
 
-    public function viewAny()
+    public function update(Admin $admin, Admin $adminInstance)
     {
-        return auth()->user()->isMaster;
+        return $admin->isMaster() && !$adminInstance->isMaster();
     }
 
-    public function update()
+    public function delete(Admin $admin, Admin $adminInstance)
     {
-        return auth()->user()->isMaster;
+       return $admin->isMaster() && !$adminInstance->isMaster();
     }
 
-    public function delete()
+    public function deleteAny(Admin $admin)
     {
-        return auth()->user()->isMaster;
-    }
-
-    public function deleteAny()
-    {
-        return auth()->user()->isMaster;
+        return false;
     }
 }

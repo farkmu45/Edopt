@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\Admin;
-use App\Models\Article;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ArticlePolicy
+class UserPolicy
 {
     use HandlesAuthorization;
 
@@ -17,7 +17,7 @@ class ArticlePolicy
     }
 
 
-    public function view(Admin $admin, Article $article)
+    public function view(Admin $admin, User $user)
     {
         return $admin->isMaster();
     }
@@ -29,13 +29,13 @@ class ArticlePolicy
     }
 
 
-    public function update(Admin $admin, Article $article)
+    public function update(Admin $admin, User $user)
     {
         return $admin->isMaster();
     }
 
 
-    public function delete(Admin $admin, Article $article)
+    public function delete(Admin $admin, User $user)
     {
         return $admin->isMaster();
     }

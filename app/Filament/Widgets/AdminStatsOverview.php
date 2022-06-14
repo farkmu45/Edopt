@@ -25,9 +25,9 @@ class AdminStatsOverview extends BaseWidget
     protected function getCards(): array
     {
         return [
-            Card::make('Panti Asuhan', $this->orphanageCount),
-            Card::make('Pengguna', $this->userCount),
-            Card::make('Kunjungan', $this->appointmentCount),
+            Card::make('Total Panti Asuhan', $this->orphanageCount),
+            Card::make('Total Pengguna', $this->userCount),
+            Card::make('Total Kunjungan Berhasil', $this->appointmentCount),
         ];
     }
 }

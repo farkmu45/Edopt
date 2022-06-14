@@ -23,6 +23,7 @@ class ArticleResource extends Resource
     protected static ?string $label = 'Artikel';
     protected static ?string $pluralLabel = 'Artikel';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationGroup = 'Umum';
 
     public static function form(Form $form): Form
     {

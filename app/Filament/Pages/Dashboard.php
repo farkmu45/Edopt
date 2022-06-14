@@ -17,12 +17,12 @@ class Dashboard extends Page
 
     protected static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->isMaster;
+        return auth()->user()->isMaster();
     }
 
     public function mount(): void
     {
-        abort_unless(auth()->user()->isMaster, 403);
+        abort_unless(auth()->user()->isMaster(), 403);
     }
 
     public function getHeaderWidgets(): array

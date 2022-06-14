@@ -33,6 +33,7 @@ class AdminResource extends Resource
                         ->required(),
                     TextInput::make('email')
                         ->email()
+                        ->unique(ignoreRecord: true)
                         ->required(),
                     TextInput::make('password')
                         ->label('Kata sandi')
@@ -43,7 +44,6 @@ class AdminResource extends Resource
                         ->relationship('orphanage', 'name')
                         ->required()
                         ->searchable()
-                        ->nullable(),
                 ])->columns(2)
 
             ]);
@@ -64,9 +64,6 @@ class AdminResource extends Resource
                     ->label('Panti asuhan')
                     ->sortable()
                     ->searchable(),
-                BooleanColumn::make('is_master')
-                    ->sortable()
-                    ->label('Akun master'),
                 TextColumn::make('created_at')
                     ->label('Dibuat')
                     ->date()
