@@ -14,7 +14,8 @@ class ChildCollection extends ResourceCollection
                 'name' => $child->name,
                 'orphanage_name' => $child->orphanage->name,
                 'gender' => $child->gender,
-                'age' => $child->age
+                'age' => $child->age,
+                'additional_info' => $child->additional_info,
             ]
         );
     }

@@ -29,14 +29,14 @@ Route::middleware(['auth:api'])->group(function () {
 });
 
 Route::get('/articles', [ArticleController::class, 'getAll']);
-Route::get('/articles/{article}', [ArticleController::class, 'getById']);
+// Route::get('/articles/{article}', [ArticleController::class, 'getById']);
 
 Route::get('/appointments', [AppointmentController::class, 'getAll']);
 Route::post('/appointments', [AppointmentController::class, 'create']);
-Route::get('/appointments/{appointment}', [AppointmentController::class, 'getById']);
+// Route::get('/appointments/{appointment}', [AppointmentController::class, 'getById']);
 
 Route::get('/children', [ChildController::class, 'getAll']);
-Route::get('/children/{child}', [ChildController::class, 'getById']);
+// Route::get('/children/{child}', [ChildController::class, 'getById']);
 
 Route::get('/orphanages/{orphanage}', [OrphanageController::class, 'getById']);
-Route::get('/orphanages', [OrphanageController::class, 'search']);
+// Route::get('/orphanages', [OrphanageController::class, 'search']);

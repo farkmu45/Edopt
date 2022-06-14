@@ -19,7 +19,7 @@ class OrphanageController extends Controller
 
             // Around precision groups location based on linear number (10000 - 19999, 20000 - 29999)
 
-            return new OrphanageCollection(Orphanage::paginate(10));
+            return new OrphanageCollection(Orphanage::latest()->paginate(5));
         // }
     }
 

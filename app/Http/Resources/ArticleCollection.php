@@ -13,6 +13,7 @@ class ArticleCollection extends ResourceCollection
                 'admin_name' => $article->admin->name,
                 'title' => $article->title,
                 'preview_text' => $article->preview_text,
+                'content' => $article->content,
                 'image_url' => asset($article->image_url),
                 'created_at' => $article->created_at,
                 'updated_at' => $article->updated_at

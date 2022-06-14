@@ -18,7 +18,7 @@ class ChildController extends Controller
         // $gender = $request->input('gender') ?? '';
 
         // Limit child location to 40 km
-        return new ChildCollection(Child::all());
+        return new ChildCollection(Child::latest()->get());
     }
 
     public function getById(Child $child)
