@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Console\Commands\Concerns\WithInputValidation;
 use App\Models\Admin;
 use Exception;
 use Illuminate\Console\Command;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class CreateMasterAdmin extends Command
 {
+    use WithInputValidation;
     /**
      * The name and signature of the console command.
      *
@@ -30,9 +32,15 @@ class CreateMasterAdmin extends Command
      */
     public function handle()
     {
-        $name = $this->ask('Masukkan nama lengkap');
-        $email = $this->ask('Masukkan email (dengan domain @edopt.com)');
-        $password = $this->secret('Masukkan password');
+        $name = $this->askWithValidation('Masukkan nama', [
+            'required'
+        ], 'nama');
+
+        $email = $this->askWithValidation('Masukkan email (dengan domain @edopt.com)', [
+            'required', 'unique:admins,email', 'ends_with:@edopt.com', 'email'
+        ], 'email');
+
+        $password = $this->askWithValidation('Masukkan password', ['required', 'min:8'], 'password', true);
         try {
             Admin::create([
                 'name' => $name,
