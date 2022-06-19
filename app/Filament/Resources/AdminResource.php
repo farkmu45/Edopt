@@ -33,10 +33,13 @@ class AdminResource extends Resource
                         ->required(),
                     TextInput::make('email')
                         ->email()
+                        ->helperText('Pastikan domain email adalah edopt.com')
+                        ->rule('ends_with:@edopt.com')
                         ->unique(ignoreRecord: true)
                         ->required(),
                     TextInput::make('password')
                         ->label('Kata sandi')
+                        ->minLength(8)
                         ->password()
                         ->required(),
                     BelongsToSelect::make('orphanage')

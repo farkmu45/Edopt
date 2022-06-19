@@ -37,6 +37,7 @@ class Profile extends BaseProfile
                     TextInput::make('email')
                         ->email()
                         ->helperText('Pastikan domain email adalah edopt.com')
+                        ->rule('ends_with:@edopt.com')
                         ->unique(ignoreRecord: true)
                         ->label('Alamat email')
                         ->required(),
