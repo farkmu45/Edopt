@@ -45,7 +45,7 @@ class Child extends Model
             $record['id'],
         );
 
-        $record['is_adopted'] = false;
+        $record['is_adopted'] = $this->is_adopted;
         return $record;
     }
 }
