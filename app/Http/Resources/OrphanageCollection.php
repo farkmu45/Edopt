@@ -12,7 +12,7 @@ class OrphanageCollection extends ResourceCollection
             fn ($orphanage) => [
                 'id' => $orphanage->id,
                 'name' => $orphanage->name,
-                'image_url' => asset($orphanage->image_url),
+                'image_url' => asset('storage/'.$orphanage->image_url),
                 'province' => ucwords(strtolower($orphanage->province->name)),
                 'regency' =>  ucwords(strtolower($orphanage->regency->name)),
                 'district' => ucwords(strtolower($orphanage->district->name)),
