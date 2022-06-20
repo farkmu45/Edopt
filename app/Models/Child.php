@@ -15,6 +15,10 @@ class Child extends Model
 
     protected $guarded = ['id'];
     protected $table = 'children';
+    protected $casts = [
+        'is_adopted' => 'boolean',
+        'age' => 'integer',
+    ];
 
 
     public function orphanage()
@@ -40,6 +44,8 @@ class Child extends Model
             $record['additional_info'],
             $record['id'],
         );
+
+        $record['is_adopted'] = false;
         return $record;
     }
 }
