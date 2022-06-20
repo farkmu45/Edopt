@@ -17,14 +17,14 @@ class ChildController extends Controller
         $maxAge = $request->input('max_age') ?? 20;
         $gender = $request->input('gender') ?? '';
 
-        // Limit child location to 40 km
+        // Limit child location to 30 km
         return new ChildCollection(Child::search()
             ->whereBetween('age', [$minAge, $maxAge])
             ->where('is_adopted', 0)
             ->aroundLatLng($lat, $lng)
             ->with([
                 'facetFilters' => 'gender:'.$gender,
-                'aroundRadius' => 40000,
+                'aroundRadius' => 30000,
             ])
             ->paginate(10));
     }
