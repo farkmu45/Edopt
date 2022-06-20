@@ -12,7 +12,7 @@ class EditAppointment extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        if ($data['status'] == 'SUCCEED') {
+        if ($data['status'] == 'SUCCESS') {
 
             $child = Child::find($data['child_id']);
             $child->is_adopted = true;
