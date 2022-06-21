@@ -3,7 +3,7 @@
 		/*
 		 * The firebase_project_id key is used when connecting to firebase authentication.
 		 */
-		'firebase_project_id' => 'authtest-37cd8',
+		'firebase_project_id' => 'edopt-64a5d',
 		/*
 		 * The TARGET_PROVIDER key is used for connecting with your desired model.
 		 * by default laravel provider is users
