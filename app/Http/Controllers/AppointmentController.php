@@ -14,19 +14,22 @@ class AppointmentController extends Controller
 {
     public function getAll()
     {
-        return new AppointmentCollection(Appointment::where('user_id', auth()->user()->id)
-            ->latest()->paginate(5));
+        // TODO get by user ID from token
+
+        return new AppointmentCollection(Appointment::where('user_id', 2)->latest()->paginate(5));
     }
 
     public function getById(Appointment $appointment)
     {
+        // TODO authorize by using user_id
+
         return new AppointmentResource($appointment);
     }
 
     public function create(AppointmentPostRequest $request)
     {
         $data = $request->validated();
-        $data['user_id'] = auth()->user()->id;
+        $data['user_id'] = 2;
 
         $parsedDate = Carbon::parse($data['time']);
         $date = $parsedDate->format('Y-m-d');
